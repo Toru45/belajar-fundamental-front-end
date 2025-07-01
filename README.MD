@@ -67,11 +67,10 @@ This project uses GitHub Actions for continuous integration and deployment:
 
 ### Pipeline Flow
 1. **SonarCloud Analysis** - Code quality check and security scan
-2. **Automated Deployment** - Deploy to Vercel after successful CI
+2. **Production Deployment** - Deploy to Vercel after successful CI
 
-### Deployment Environments
-- **Preview**: Automatic deployment for all pull requests
-- **Production**: Automatic deployment to production when merged to `master` branch
+### Deployment Environment
+- **Production**: Automatic deployment to production when merged to `master` branch and SonarCloud analysis passes
 
 ### Required Secrets
 To set up the deployment pipeline, add these secrets to your GitHub repository:
