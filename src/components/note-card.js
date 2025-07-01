@@ -27,6 +27,7 @@ class NoteCard extends HTMLElement {
     const archived = this.getAttribute('archived') === 'true';
 
     const formattedDate = date ? this.formatDate(date) : '';
+    const archiveButtonText = archived ? 'Unarchive' : 'Archive';
 
     this.innerHTML = `
             <div class="note-title">${title}</div>
@@ -37,7 +38,7 @@ class NoteCard extends HTMLElement {
                 ? `
                 <div class="note-actions">
                     <button class="btn btn-secondary btn-small archive-btn" data-note-id="${noteId}">
-                        ${archived ? 'Unarchive' : 'Archive'}
+                        ${archiveButtonText}
                     </button>
                     <button class="btn btn-danger btn-small delete-btn" data-note-id="${noteId}">
                         Delete
