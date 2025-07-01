@@ -9,7 +9,6 @@ let notes = [];
 let currentView = 'active';
 
 function showTabLoading() {
-  // Remove existing loading if any
   hideTabLoading();
 
   const searchInput = document.getElementById('search-input');
@@ -18,8 +17,6 @@ function showTabLoading() {
     loadingDiv.id = 'tab-loading';
     loadingDiv.className = 'notes-loading';
     loadingDiv.textContent = 'Loading notes...';
-
-    // Insert loading between search input and notes container
     searchInput.insertAdjacentElement('afterend', loadingDiv);
   }
 }
