@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  mynotes-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: mynotes-app
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - mynotes-network
+
+  # Development service
+  mynotes-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: mynotes-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run start-dev
+    networks:
+      - mynotes-network
+    profiles:
+      - dev
+
+networks:
+  mynotes-network:
+    driver: bridge
+
+volumes:
+  mynotes-data: 
