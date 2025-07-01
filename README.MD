@@ -18,6 +18,7 @@
 Kindly check my [Notion Link](https://www.notion.so/Kriteria-Submission-Belajar-Fundamental-Front-End-Web-Development-223d83fecd52802fae1dde49749ece62?source=copy_link)
 
 ## How To Install
+
 ### Option 1: Local Development Setup
 
 1. **Clone the repository**
@@ -59,6 +60,26 @@ Kindly check my [Notion Link](https://www.notion.so/Kriteria-Submission-Belajar-
    # For development
    docker-compose --profile dev up mynotes-dev
    ```
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment:
+
+### Pipeline Flow
+1. **SonarCloud Analysis** - Code quality check and security scan
+2. **Automated Deployment** - Deploy to Vercel after successful CI
+
+### Deployment Environments
+- **Preview**: Automatic deployment for all pull requests
+- **Production**: Automatic deployment to production when merged to `master` branch
+
+### Required Secrets
+To set up the deployment pipeline, add these secrets to your GitHub repository:
+
+```bash
+SONAR_TOKEN=your_sonar_token
+VERCEL_TOKEN=your_vercel_token
+```
 
 ### Available Scripts
 - `npm run start-dev` - Start development server with webpack-dev-server
